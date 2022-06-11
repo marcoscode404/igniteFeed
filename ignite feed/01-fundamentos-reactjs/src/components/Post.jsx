@@ -24,7 +24,11 @@ export function Post() {
 
                <p> <a  href='#'>👉 jane.design/doctorcare</a></p>
 
-               <p> <a href='#'>#novoprojeto #nlw #rocketseat</a></p>
+               <p> 
+                    <a href='#'>#novoprojeto </a>
+                    <a>#nlw </a>
+                    <a>#rocketseat</a>
+               </p>
             </div>
         </article>
     );
