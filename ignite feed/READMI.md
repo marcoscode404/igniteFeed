@@ -3,5 +3,7 @@
 
 # biblioteca de icones
 -- phosphoricons
-
 --> npm i phosphor-react
+
+# biblioteca para formatar datas e horas
+* npm i date-fns
