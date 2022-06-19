@@ -1,11 +1,24 @@
+import { useState } from 'react';
 import { format, formatDistanceToNow } from 'date-fns'; 
 import ptBR from 'date-fns/esm/locale/pt-BR';
+
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
 
+
+
+
 export function Post({ author, publishedAt, content }) {
+
+    // Conceito de estado
+    // estado -> variaveis que eu quero que o componente monitore
+
+    const [comments, setComments] = useState([
+        'estado dos posts?'
+    ]);
+
 
     // estruturando/formatando o horario
     const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
@@ -16,6 +29,20 @@ export function Post({ author, publishedAt, content }) {
         locale: ptBR,
         addSuffix: true
     })
+    // -- /Horario/ -- //
+
+
+
+
+    // disparada com a ação do usuario uso o padrão handle
+    function handleCreateNewComment() {
+        event.preventDefault();
+
+        setComments([...comments, comments.length + 1]);
+
+        console.log(comments);
+
+    };
     
     
     return(  
@@ -46,10 +73,10 @@ export function Post({ author, publishedAt, content }) {
                 })}
             </div>
 
-            <form className={styles.commentForm}>
+            <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
                 <strong>Deixe seu comentário</strong>
 
-                <textarea
+                <textarea 
                     placeholder='Deixe seu comentario'
                 />
                 
@@ -60,9 +87,9 @@ export function Post({ author, publishedAt, content }) {
         </form>
 
         <div className={styles.commentList}>
-            <Comment />
-            <Comment />
-            <Comment />
+                {comments.map(comment => {
+                    return <Comment />
+                })}
         </div>
 
         </article>
