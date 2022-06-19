@@ -70,6 +70,9 @@ export function Post({ author, publishedAt, content }) {
 
             </header>
 
+{/* dica --> se caso for puxar os dados de alguma api só mudar -> line.content
+    para  ID
+*/}
             <div className={styles.content}>
                 {content.map(line => {
                     if (line.type === 'paragraph') {
@@ -99,7 +102,7 @@ export function Post({ author, publishedAt, content }) {
 
         <div className={styles.commentList}>
                 {comments.map(comment => {
-                    return <Comment content={comment}/>
+                    return <Comment key={comment} content={comment}/>
                 })}
         </div>
 
