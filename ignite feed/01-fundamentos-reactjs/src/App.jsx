@@ -6,7 +6,7 @@ import styles from './App.module.css';
 
 import './global.css';
 
-
+// array de post 
 const post = [
   {
     id: 1,
@@ -37,7 +37,6 @@ const post = [
     publishedAt: new Date('2022-06-15 20:00:00')
   },
 ]
-
 
 export function App() {
   return (

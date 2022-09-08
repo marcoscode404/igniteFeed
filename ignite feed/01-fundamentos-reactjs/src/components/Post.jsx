@@ -2,13 +2,9 @@ import { useState } from 'react';
 import { format, formatDistanceToNow } from 'date-fns'; 
 import ptBR from 'date-fns/esm/locale/pt-BR';
 
-
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
-
-
-
 
 export function Post({ author, publishedAt, content }) {
 
@@ -19,28 +15,28 @@ export function Post({ author, publishedAt, content }) {
         'estado dos posts aqui!'
     ]);
 
+    //  estado de novo comentario 
     const [newCommentText, setNewCommentText ] = useState('');
 
-
-    // estruturando/formatando o horario
+    // estruturando/formatando o horario / 
+    
+    // date-fns instalando a dependencia para tratar de format de datas
     const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR,
     })
 
+    // tempo da publicação
     const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
         locale: ptBR,
         addSuffix: true
     })
     // -- /Horario/ -- //
 
-
-
-
     // disparada com a ação do usuario uso o padrão handle
     function handleCreateNewComment() {
         event.preventDefault();
 
-
+        // spread operator ... - copia parte ou todo valor de um array que já existe e adicionar o novo valor
         setComments([...comments, newCommentText]);
 
         setNewCommentText('');
@@ -50,7 +46,6 @@ export function Post({ author, publishedAt, content }) {
     function handleNewCommentChange() {
         setNewCommentText(event.target.value)
     }
-    
     
     return(  
         <article className={styles.post}>
@@ -70,9 +65,9 @@ export function Post({ author, publishedAt, content }) {
 
             </header>
 
-{/* dica --> se caso for puxar os dados de alguma api só mudar -> line.content
-    para  ID
-*/}
+            {/* dica --> se caso for puxar os dados de alguma api só mudar -> line.content
+                para  ID
+            */}
             <div className={styles.content}>
                 {content.map(line => {
                     if (line.type === 'paragraph') {
