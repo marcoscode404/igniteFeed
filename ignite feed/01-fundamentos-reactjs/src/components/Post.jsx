@@ -45,7 +45,8 @@ export function Post({ author, publishedAt, content }) {
 
     // função  que dispara novo comentario
     function handleNewCommentChange() {
-        setNewCommentText(event.target.value)
+        event.target.setCustomValidity('');
+        setNewCommentText(event.target.value);
     }
 
     // função que comunica com Comment.jsx via propriedade para deletar os comentarios
@@ -59,6 +60,12 @@ export function Post({ author, publishedAt, content }) {
 
         setComments(commentsWithoutDeletedOne);
     }
+
+    // função disparada se caso não tiver valor inserido
+    function handleNewCommentInvalid() {
+        event.target.setCustomValidity('esse campo é obrigatório');
+    }
+
     
     return(  
         <article className={styles.post}>
@@ -98,6 +105,8 @@ export function Post({ author, publishedAt, content }) {
                     name="comment"
                     placeholder='Deixe seu comentario'
                     value={newCommentText}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                     // monitorar quando houver alguma mudança no conteudo da textarea
                     onChange={handleNewCommentChange}
                 />

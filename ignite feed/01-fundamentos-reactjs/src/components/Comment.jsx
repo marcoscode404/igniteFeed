@@ -7,9 +7,8 @@ export function Comment({ content, onDeleteComment }) {
     
     // função de deletar comentario
     function handleDeleteComment() {
-        console.log("deletar")
         // propriedade vinda do componente pai
-        onDeleteComment(content)
+        onDeleteComment(content);
     }
     
     
