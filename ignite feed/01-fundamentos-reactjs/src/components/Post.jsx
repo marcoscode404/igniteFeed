@@ -43,6 +43,7 @@ export function Post({ author, publishedAt, content }) {
       
     };
 
+    // função  que dispara novo comentario
     function handleNewCommentChange() {
         setNewCommentText(event.target.value)
     }
