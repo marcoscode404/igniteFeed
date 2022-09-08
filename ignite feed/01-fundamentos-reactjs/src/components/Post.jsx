@@ -47,6 +47,18 @@ export function Post({ author, publishedAt, content }) {
     function handleNewCommentChange() {
         setNewCommentText(event.target.value)
     }
+
+    // função que comunica com Comment.jsx via propriedade para deletar os comentarios
+    // imutabilidade -> as variaveis não sofrem mutação
+    // nós criamos um novo valor  (um novo espaço na memoria)
+    // mantenha somente os comentarios que não forem deletados
+    function deleteComment(commentToDelete) {
+        const commentsWithoutDeletedOne = comments.filter(comment => {
+            return comment !== commentToDelete;
+        })
+
+        setComments(commentsWithoutDeletedOne);
+    }
     
     return(  
         <article className={styles.post}>
@@ -98,7 +110,11 @@ export function Post({ author, publishedAt, content }) {
 
         <div className={styles.commentList}>
                 {comments.map(comment => {
-                    return <Comment key={comment} content={comment}/>
+                    return <Comment 
+                        key={comment}
+                        content={comment} 
+                        onDeleteComment={deleteComment}
+                    />
                 })}
         </div>
 

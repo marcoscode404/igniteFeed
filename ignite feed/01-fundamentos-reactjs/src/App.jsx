@@ -47,6 +47,7 @@ export function App() {
         <Sidebar />
 
         <main>
+          {/* iteração map que percorre o array e retorna os valores */}
           {post.map(post => {
             return (
               <Post 
