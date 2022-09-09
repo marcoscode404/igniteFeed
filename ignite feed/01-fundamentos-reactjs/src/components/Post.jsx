@@ -114,7 +114,7 @@ export function Post({ author, publishedAt, content }) {
                 />
                 
                 <footer>
-                    {/* habilite o botão só se o a quantidade de caracteres no input for maior que zero */}
+                    {/* fica desabilitado quando o novo comentario está vazio */}
                     <button type='submit' disabled={inNewCommentEmpty}>Publicar</button>
                 </footer>
                 
