@@ -1,0 +1,26 @@
+.wrapper {
+    max-width: 70rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+
+    display: grid;
+    grid-template-columns: 256px 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* com base na utilização da medida Rem
+quando eu controlo o fonte size o Rem diminui a tela nativamente por meio dessa
+configuração
+*/
+
+@media (max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+
+
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+}
