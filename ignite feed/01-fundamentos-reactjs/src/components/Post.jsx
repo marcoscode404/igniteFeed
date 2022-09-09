@@ -66,7 +66,9 @@ export function Post({ author, publishedAt, content }) {
         event.target.setCustomValidity('esse campo é obrigatório');
     }
 
-    
+    // variavel para o botão ficar desabilitado se o valor do input for igual a zero
+    const inNewCommentEmpty = newCommentText.length === 0;
+
     return(  
         <article className={styles.post}>
             <header>
@@ -112,7 +114,8 @@ export function Post({ author, publishedAt, content }) {
                 />
                 
                 <footer>
-                    <button type='submit'>Publicar</button>
+                    {/* habilite o botão só se o a quantidade de caracteres no input for maior que zero */}
+                    <button type='submit' disabled={inNewCommentEmpty}>Publicar</button>
                 </footer>
                 
         </form>
